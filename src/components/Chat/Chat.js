@@ -7,6 +7,7 @@ import './Chat.css';
 import InfoBar from '../InfoBar/InfoBar'
 import Input from '../Input/Input'
 import Messages from '../Messages/Messages'
+import TextContainer from '../TextContainer/TextContainer'
 
 let socket;
 
@@ -19,7 +20,8 @@ function Chat({location}) {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const ENDPOINT = 'https://react-chat-app-emi.herokuapp.com/'
+    const ENDPOINT = 'http://localhost:5000/'
+    //const ENDPOINT = 'https://react-chat-app-emi.herokuapp.com/'
 
     useEffect(()=>{
         const {name,room} = queryString.parse(location.search)
@@ -64,7 +66,7 @@ function Chat({location}) {
                 <Input  message={message} 
                         setMessage={setMessage} 
                         sendMessage={sendMessage}/>
-                {/*<TextContainer users={users}/>*/}
+                <TextContainer users={users} setUsers={setUsers}/>
             </div>
         </div>
     );
